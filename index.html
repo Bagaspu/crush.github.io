@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BagasTachi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Roboto&display=swap');
+        .main{
+            justify-content: center;
+            padding: 3rem;
+            margin: 3rem;
+            border: 1px solid;
+        
+        }
+        body{
+            font-family: 'Poppins';
+            background-color: #fdb9c8;
+        }
+        button{
+            border: none;
+            cursor:pointer;
+            
+        }
+        footer{
+            font-size: x-small;
+            text-align: center;
+        }
+        #no{
+            font-size: larger;
+            position: absolute;
+        }
+        #yes{
+            font-size: larger;
+            margin-left: 4.4rem;
+
+        }
+        img{
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media screen and (max-width: 500px) {
+            .main{
+                justify-content: center;
+                padding: 2rem;
+                margin: 2rem;
+                border: 1px solid;
+            }
+            img{
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <footer>
+        <p>Copyright &copy; BagasTachi</p>
+    </footer>
+    <div class="main">
+        <h2 id="heading">Kamu Mau Nggak Jadi Pacarku?</h2>
+        <button id="no">Najiss</button>
+        <button id="yes" onclick="yes()">Mauuu!!</button>
+        
+    </div>
+
+    <marquee id="result"></marquee>
+    <img id="gif" src="https://media.giphy.com/media/26FLdmIp6wJr91JAI/giphy.gif" alt="">
+    
+
+    <script>
+        const hariIni = new Date().toLocaleDateString();
+        let user = prompt("Nama: ")
+        const tombolNo = document.getElementById("no");
+        const tombolYes = document.getElementById("yes");
+        const result = document.getElementById("result");
+        const textNode = document.createTextNode("Hari ini pada tanggal " + hariIni+ " Kita resmi pacaran horee")
+
+        function yes() {
+            alert("yess, gitu dongg.. tinggal terima cintaku apa susahnyaa")
+            var imageGif = document.createElement("img");
+            imageGif.setAttribute("src","https://media.giphy.com/media/9d3LQ6TdV2Flo8ODTU/giphy.gif")
+            imageGif.setAttribute("width","220px")
+            imageGif.setAttribute("heigth","150px")
+
+            document.body.appendChild(imageGif)
+            result.appendChild(textNode)
+            tombolNo.remove();
+            tombolYes.remove();
+            var isi = document.getElementById('heading');
+            isi.innerHTML = "Hai sayangg " + user
+            
+        }
+
+        tombolNo.addEventListener("mouseover", randomNilai)
+        tombolNo.addEventListener("click", randomNilai)
+
+        const increment = (() => {
+            let i = 1;
+            
+            return ()=> i++;
+            
+        })();
+        
+        function randomNilai(){
+            const x = Math.floor(Math.random()*250)+1;
+            const y = Math.floor(Math.random()*500)+5;
+
+            tombolNo.style.left = x+'px';
+            tombolNo.style.top = y +'px;';
+
+            if (increment() === 9 ){
+                alert("tinggal pencet mau apa susah nya sih 😢")
+            }
+        }
+
+    </script>
+</body>
+</html>
